@@ -3,14 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueResource from 'vue-resource'
 // import {a} from './components/Test.vue'
 // console.log(a);
+Vue.use(VueResource)
 
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
 import './assets/mui/css/mui.min.css'
+import './assets/mui/css/icons-extra.css'
 
 Vue.config.productionTip = false
 
