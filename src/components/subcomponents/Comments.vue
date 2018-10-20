@@ -2,8 +2,8 @@
     <div class="cmt">
         <h3>发表评论</h3>
         <hr>
-        <textarea placeholder="请输入要BB的内容（最多吐槽120字）" maxlength="120"></textarea>
-        <mt-button type="primary" size="large">确认发表</mt-button>
+        <textarea placeholder="请输入要BB的内容（最多吐槽120字）" maxlength="120" v-model="msg"></textarea>
+        <mt-button type="primary" size="large" @click="postComments">确认发表</mt-button>
         <ul class="cmt-list">
             <li v-for="(item,index) in comments" :key="index">
                 <div class="head">
@@ -24,7 +24,8 @@
         data() {
             return {
                 pageIndex: 1,
-                comments:[]
+                comments:[],
+                msg:''
             }
         },
         created() {
@@ -43,6 +44,21 @@
             loadmore() {
                 this.pageIndex++;
                 this.getComments();
+            },
+            postComments() {
+                if (!this.msg.trim()) return Toast('评论内容不能为空')
+                this.$http.post('api/postcomment/'+this.id,{content:this.msg.trim()})
+                .then(res => {
+                    if (res.body.status === 0) {
+                        var cmt = {
+                            user_name:'罗纳尔多',
+                            add_time:Date.now(),
+                            content:this.msg.trim()
+                        }
+                        this.comments.unshift(cmt);
+                        this.msg = '';
+                    }
+                })
             }
         },
         props:['id']
