@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     getlunbo() {
-      this.$http.get("http://027xin.com:8899/api/getlunbo").then(res => {
+      this.$http.get("api/getlunbo").then(res => {
         // console.log(res.body.message);
         if (res.body.status === 0) {
           this.swipperList = res.body.message;

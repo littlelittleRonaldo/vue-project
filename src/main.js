@@ -7,13 +7,22 @@ import VueResource from 'vue-resource'
 // import {a} from './components/Test.vue'
 // console.log(a);
 Vue.use(VueResource)
+Vue.http.options.root = 'http://027xin.com:8899'
 
+// 引入mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
+// 引入mui
 import './assets/mui/css/mui.min.css'
 import './assets/mui/css/icons-extra.css'
+
+// 引入moment
+import moment from 'moment'
+Vue.filter('dateFormat',function (dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
 
 Vue.config.productionTip = false
 
