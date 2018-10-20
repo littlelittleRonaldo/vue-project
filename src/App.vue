@@ -33,28 +33,28 @@ export default {
 }
 </script>
 
-<style>
-.app {
-  /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50; */
-  padding-top: 40px;
-	padding-bottom: 50px;
-	overflow-x: hidden;
-}
-.v-enter {
-	opacity: 0;
-	transform: translateX(100%)
-}
-.v-leave-to {
-	opacity: 0;
-	transform: translateX(-100%);
-	position: absolute;
-}
-.v-enter-active,
-.v-leave-active {
-	transition: all .3s ease;
-}
+<style lang="scss" scoped>
+	.app {
+		/* font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50; */
+		padding-top: 40px;
+		padding-bottom: 50px;
+		overflow-x: hidden;
+	}
+	.v-enter {
+		opacity: 0;
+		transform: translateX(100%)
+	}
+	.v-leave-to {
+		opacity: 0;
+		transform: translateX(-100%);
+		position: absolute;
+	}
+	.v-enter-active,
+	.v-leave-active {
+		transition: all .3s ease;
+	}
 </style>
