@@ -86,8 +86,13 @@ export default {
     }
     
     .thumbs {
-        img {
-
+        /deep/ figure {
+            margin: 1em 10px;
+            display: inline-block;
+            img {
+                width: 100px;
+                height: 100px;
+            }
         }
     }
 }
