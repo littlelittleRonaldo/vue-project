@@ -27,6 +27,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'mui':path.resolve(__dirname,'../src/assets/mui/js/mui.js')
     }
   },
   module: {
@@ -64,6 +65,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test:/vue-preview.src.*?js$/,
+        loader:'babel-loader'
       }
     ]
   },

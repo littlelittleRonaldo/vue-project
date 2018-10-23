@@ -37,7 +37,7 @@
                     if (res.body.status === 0) {
                         this.comments = this.comments.concat(res.body.message)
                     }else {
-                        Toast('加载数据失败')
+                        Toast('加载评论失败')
                     }
                 })
             },
@@ -51,7 +51,7 @@
                 .then(res => {
                     if (res.body.status === 0) {
                         var cmt = {
-                            user_name:'罗纳尔多',
+                            user_name:'匿名用户',
                             add_time:Date.now(),
                             content:this.msg.trim()
                         }

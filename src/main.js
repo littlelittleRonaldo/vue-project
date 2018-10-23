@@ -24,6 +24,10 @@ Vue.filter('dateFormat',function (dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
   return moment(dataStr).format(pattern)
 })
 
+// 引入vue-preview
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
