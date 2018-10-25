@@ -2,7 +2,7 @@
         <mt-loadmore :autoFill='false' :top-method="loadTop" :bottom-method="loadBottom" 
         :bottom-all-loaded="allLoaded" ref="loadmore" bottomPullText="加载更多">
             <ul class="goods-list">
-                <li class="goods-item" v-for="item in list" :key="item.id">
+                <li class="goods-item" v-for="item in list" :key="item.id" @click="goDetail(item.id)">
                     <img :src="item.img_url" alt="">
                     <h3 class="title" v-text="item.title"></h3>
                     <div class="info">
@@ -61,6 +61,9 @@
                 this.pageindex++;
                 this.getGoodslist();
                 this.$refs.loadmore.onBottomLoaded();
+            },
+            goDetail(id) {
+                this.$router.push({name:'GoodsInfo',params:{id}})
             }
         }
     }

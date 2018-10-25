@@ -1251,7 +1251,7 @@ import GoodsList from '../components/goods/GoodsList.vue'
                 </p>
             </div>
         </div>
-    </div>
+    </div>a
 </mt-loadmore>
 ```
 

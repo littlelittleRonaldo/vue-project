@@ -1,11 +1,6 @@
 <template>
-    <div>
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="(item, index) in swipperList" :key="index">
-                <img :src="item.img" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
-
+    <div>        
+        <swiper :swiperList="swiperList"></swiper>
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
                 <router-link to="/home/newslist">
@@ -49,10 +44,11 @@
 
 <script>
 import { Toast } from "mint-ui";
+import Swiper from '@/components/subcomponents/Swiper'
 export default {
   data() {
     return {
-      swipperList: []
+      swiperList: []
     };
   },
   created() {
@@ -63,7 +59,7 @@ export default {
       this.$http.get("api/getlunbo").then(res => {
         // console.log(res.body.message);
         if (res.body.status === 0) {
-          this.swipperList = res.body.message;
+          this.swiperList = res.body.message;
           Toast({
             message: "操作成功",
             iconClass: "mui-icon mui-icon-checkmarkempty"
@@ -76,20 +72,14 @@ export default {
         }
       });
     }
+  },
+  components:{
+      swiper:Swiper
   }
 };
 </script>
 
 <style lang="scss" scoped>
-    .mint-swipe {
-        height: 200px;
-        .mint-swipe-item {
-            img {
-            width: 100%;
-            height: 100%;
-            }
-        }
-    }
     .mui-grid-view.mui-grid-9 {
         background-color: #fff;
         border: none;

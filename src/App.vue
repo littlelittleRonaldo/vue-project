@@ -1,6 +1,10 @@
 <template>
   <div class="app">
-    <mt-header fixed title="黑马程序员 Vue项目"></mt-header>
+    <mt-header fixed title="黑马程序员 Vue项目">
+		<span @click="goback" slot="left" v-show="$route.path !=='/home' && $route.path !=='/'">
+    		<mt-button icon="back">返回</mt-button>
+  		</span>
+	</mt-header>
 		<nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item-llb" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
@@ -11,7 +15,9 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item-llb" to="cart">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+					<span class="mui-badge" id="cart">0</span>
+				</span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item-llb" to="search">
@@ -29,7 +35,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods:{
+	  goback() {
+		  this.$router.go(-1)
+	  }
+  },
 }
 </script>
 

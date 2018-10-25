@@ -55,7 +55,6 @@ export default {
                     item.msrc = item.src
                 });
                 this.list = res.body.message;
-                console.log(this.list);
             } else {
                 Toast("获取缩略图失败");
             }
@@ -87,7 +86,7 @@ export default {
     
     .thumbs {
         /deep/ figure {
-            margin: 1em 10px;
+            margin: 1em 9px;
             display: inline-block;
             img {
                 width: 100px;
