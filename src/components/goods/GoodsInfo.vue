@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div class="mui-card" style="z-index:99">
+        <div class="mui-card">
             <div class="mui-card-header" v-text="goodsInfo.title"></div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
@@ -19,13 +19,13 @@
                         购买数量：
                         <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1'>
                             <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-                            <input class="mui-numbox-input" type="number" @change="numChanged" ref="numbox" />
+                            <input class="mui-numbox-input" type="number" @change="numChanged(goodsInfo.stock_quantity)" ref="numbox" />
                             <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
                         </div>
                     </div>
                     <div class="buy">
                         <mt-button type="primary" size="small">立即购买</mt-button>
-                        <mt-button type="danger" size="small" @click="flag=!flag">加入购物车</mt-button>
+                        <mt-button type="danger" size="small" @click="addCart">加入购物车</mt-button>
                     </div>
                 </div>
             </div>
@@ -115,8 +115,22 @@
             afterEnter() {
                 this.flag=!this.flag
             },
-            numChanged() {
+            numChanged(max) {
+                if (this.$refs.numbox.value > max) {
+                    this.$refs.numbox.value = max
+                }
                 console.log(this.$refs.numbox.value);
+            },
+            addCart() {
+                this.flag=!this.flag;
+                var cartInfo = {
+                    id:parseInt(this.id),
+                    count:parseInt(this.$refs.numbox.value),
+                    price:this.goodsInfo.sell_price,
+                    max:parseInt(this.goodsInfo.stock_quantity),
+                    selected:true
+                }
+                this.$store.commit('addCart',cartInfo)
             }
         },
         components:{
