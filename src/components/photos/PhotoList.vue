@@ -5,7 +5,7 @@
                 <div class="mui-scroll">
                     <a :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']" 
                     v-for="(item,index) in cates" :key="index"
-                    @click="getList(item.id)">
+                    @tap="getList(item.id)">
                         {{ item.title }}
                     </a>
                 </div>
